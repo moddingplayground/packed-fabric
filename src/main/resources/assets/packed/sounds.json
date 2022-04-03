@@ -1,0 +1,11 @@
+{
+  "item.backpack.equip": {
+    "sounds": [
+      "packed:item/backpack/equip",
+      "packed:item/backpack/equip2",
+      "packed:item/backpack/equip3",
+      "packed:item/backpack/equip4"
+    ],
+    "subtitle": "subtitles.packed.item.backpack.equip"
+  }
+}

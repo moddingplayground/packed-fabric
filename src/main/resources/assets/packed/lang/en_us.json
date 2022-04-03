@@ -1,4 +1,7 @@
 {
   "mod.packed.name": "Packed",
-  "mod.packed.contact.discord": "Discord"
+  "mod.packed.contact.discord": "Discord",
+
+  "item.packed.backpack": "Backpack",
+  "subtitles.packed.item.backpack.equip": "Backpack rustles"
 }

@@ -27,9 +27,15 @@
 
   "environment": "*",
   "entrypoints": {
-    "main": [ "net.moddingplayground.packed.impl.PackedImpl" ]
+    "main": [ "net.moddingplayground.packed.impl.PackedImpl" ],
+    "client": [
+      "net.moddingplayground.packed.impl.client.PackedClientImpl",
+      "net.moddingplayground.packed.impl.client.item.PackedItemsClientImpl",
+      "net.moddingplayground.packed.impl.client.render.entity.BackpackArmorRendererImpl"
+    ],
+
+    "toymaker": [ "net.moddingplayground.packed.impl.data.PackedToymakerImpl" ]
   },
-  "mixins": [ "packed.mixins.json" ],
 
   "depends": {
     "java": ">=17",
