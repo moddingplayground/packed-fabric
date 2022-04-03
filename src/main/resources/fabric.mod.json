@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+
+  "id": "packed",
+  "version": "${version}",
+  "license": [
+    "MIT (Code)",
+    "All Rights Reserved (Assets)"
+  ],
+
+  "name": "Packed",
+  "icon": "assets/packed/icon.png",
+  "description": "A vanilla-style backpack mod",
+
+  "authors": [
+    "Gaetano Russo (Ninni)",
+    "Daniel Orr (Andante)"
+  ],
+  "contact": {
+    "homepage": "https://moddingplayground.net/packed",
+    "sources": "https://github.com/moddingplayground/packed-fabric",
+    "issues": "https://github.com/moddingplayground/packed-fabric/issues"
+  },
+  "custom": {
+    "modmenu": { "links": { "mod.packed.contact.discord": "https://discord.moddingplayground.net" } }
+  },
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [ "net.moddingplayground.packed.impl.PackedImpl" ]
+  },
+  "mixins": [ "packed.mixins.json" ],
+
+  "depends": {
+    "java": ">=17",
+    "minecraft": ">=1.18.2",
+    "fabricloader": ">=0.13",
+    "fabric": ">=0.48",
+    "frame": ">=0.16"
+  }
+}
