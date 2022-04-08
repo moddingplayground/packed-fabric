@@ -9,15 +9,12 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
-import net.minecraft.inventory.StackReference;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Wearable;
-import net.minecraft.screen.slot.Slot;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.stat.Stats;
-import net.minecraft.util.ClickType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.collection.DefaultedList;
@@ -76,13 +73,6 @@ public class BackpackItem extends Item implements Wearable {
     }
 
     @Override
-    public boolean onClicked(ItemStack stack, ItemStack other, Slot slot, ClickType type, PlayerEntity player, StackReference cursor) {
-        if (stack != player.getEquippedStack(EquipmentSlot.CHEST)) return false; // check that the slot being checked is an equipped slot
-        if (other.isItemEqualIgnoreDamage(stack) && getSlotCount(other) >= getSlotCount(stack)) return false; // allow higher slot counts
-        return !getStacks(player).stream().allMatch(ItemStack::isEmpty); // check that the backpack is empty
-    }
-
-    @Override
     public SoundEvent getEquipSound() {
         return PackedSoundEvents.ITEM_BACKPACK_EQUIP;
     }
@@ -98,6 +88,10 @@ public class BackpackItem extends Item implements Wearable {
         PlayerInventory inventory = player.getInventory();
         PlayerInventoryAccess access = (PlayerInventoryAccess) inventory;
         return access.packed_getBackpackStacks();
+    }
+
+    public static boolean isEmpty(PlayerEntity player) {
+        return getStacks(player).stream().allMatch(ItemStack::isEmpty);
     }
 
     public static boolean isEquipped(PlayerEntity player) {
