@@ -1,11 +1,22 @@
 {
   "item.backpack.equip": {
     "sounds": [
-      "packed:item/backpack/equip",
+      "packed:item/backpack/equip1",
       "packed:item/backpack/equip2",
       "packed:item/backpack/equip3",
       "packed:item/backpack/equip4"
     ],
     "subtitle": "subtitles.packed.item.backpack.equip"
+  },
+  "enchantment.deflection.hit": {
+    "sounds": [
+      "packed:enchantment/deflection/hit1",
+      "packed:enchantment/deflection/hit2",
+      "packed:enchantment/deflection/hit3",
+      "packed:enchantment/deflection/hit4",
+      "packed:enchantment/deflection/hit5",
+      "packed:enchantment/deflection/hit6"
+    ],
+    "subtitle": "subtitles.packed.enchantment.deflection.hit"
   }
 }

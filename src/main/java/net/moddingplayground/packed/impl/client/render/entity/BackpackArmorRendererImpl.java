@@ -23,8 +23,8 @@ import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
 import net.moddingplayground.packed.api.Packed;
 import net.moddingplayground.packed.api.client.model.PackedEntityModelLayers;
-import net.moddingplayground.packed.api.client.render.entity.BackpackArmorRenderer;
 import net.moddingplayground.packed.api.client.model.item.BackpackItemModel;
+import net.moddingplayground.packed.api.client.render.entity.BackpackArmorRenderer;
 
 import java.util.Collection;
 import java.util.Collections;

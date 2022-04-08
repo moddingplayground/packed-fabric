@@ -11,8 +11,17 @@ public interface PackedSoundEvents {
         return item("backpack", id);
     }
 
+    SoundEvent ENCHANTMENT_DEFLECTION_HIT = deflection("hit");
+    private static SoundEvent deflection(String id) {
+        return enchantment("deflection", id);
+    }
+
     private static SoundEvent item(String item, String id) {
         return register("item.%s.%s".formatted(item, id));
+    }
+
+    private static SoundEvent enchantment(String enchantment, String id) {
+        return register("enchantment.%s.%s".formatted(enchantment, id));
     }
 
     private static SoundEvent register(String id) {

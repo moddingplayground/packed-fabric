@@ -31,11 +31,13 @@
     "client": [
       "net.moddingplayground.packed.impl.client.PackedClientImpl",
       "net.moddingplayground.packed.impl.client.item.PackedItemsClientImpl",
-      "net.moddingplayground.packed.impl.client.render.entity.BackpackArmorRendererImpl"
+      "net.moddingplayground.packed.impl.client.render.entity.BackpackArmorRendererImpl",
+      "net.moddingplayground.packed.impl.client.particle.PackedParticleTypesClientImpl"
     ],
 
     "toymaker": [ "net.moddingplayground.packed.impl.data.PackedToymakerImpl" ]
   },
+  "mixins": [ "packed.mixins.json" ],
 
   "depends": {
     "java": ">=17",

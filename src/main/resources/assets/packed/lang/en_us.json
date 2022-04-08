@@ -3,5 +3,11 @@
   "mod.packed.contact.discord": "Discord",
 
   "item.packed.backpack": "Backpack",
-  "subtitles.packed.item.backpack.equip": "Backpack rustles"
+  "ui.packed.backpack_title": "Back",
+
+  "enchantment.packed.capacity": "Capacity",
+  "enchantment.packed.deflection": "Deflection",
+
+  "subtitles.packed.item.backpack.equip": "Backpack rustles",
+  "subtitles.packed.enchantment.deflection.hit": "Backpack deflects"
 }
