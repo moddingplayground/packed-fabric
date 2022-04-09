@@ -32,6 +32,9 @@ public abstract class PlayerInventoryMixin implements Inventory, Nameable, Playe
 
     @Unique private DefaultedList<ItemStack> packed_backpack = DefaultedList.ofSize(BackpackItem.MAX_SLOT_COUNT, ItemStack.EMPTY);
 
+    /**
+     * Adds the backpack inventory to the combined player inventory.
+     */
     @Inject(method = "<init>", at = @At("TAIL"))
     private void onInit(PlayerEntity player, CallbackInfo ci) {
         List<DefaultedList<ItemStack>> combined = new ArrayList<>(this.combinedInventory);
@@ -39,6 +42,9 @@ public abstract class PlayerInventoryMixin implements Inventory, Nameable, Playe
         this.combinedInventory = combined;
     }
 
+    /**
+     * Writes backpack data to NBT.
+     */
     @Inject(method = "writeNbt", at = @At("TAIL"))
     private void onWriteNbt(NbtList list, CallbackInfoReturnable<NbtList> cir) {
         if (BackpackItem.isEmpty(this.player)) return; // do not write if empty (for data packs checking for empty nbt)
@@ -59,6 +65,9 @@ public abstract class PlayerInventoryMixin implements Inventory, Nameable, Playe
         list.add(nbtBackpack);
     }
 
+    /**
+     * Reads backpack data from NBT.
+     */
     @Inject(method = "readNbt", at = @At("TAIL"))
     private void onReadNbt(NbtList list, CallbackInfo ci) {
         this.packed_backpack.clear();
