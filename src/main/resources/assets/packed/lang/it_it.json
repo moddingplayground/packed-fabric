@@ -1,0 +1,11 @@
+{
+  "item.packed.backpack": "Zaino",
+  "ui.packed.backpack_title": "Zain.",
+
+  "enchantment.packed.capacity": "Capienza",
+  "enchantment.packed.deflection": "Impenetrabilità",
+  "enchantment.packed.attachment": "Legame",
+
+  "subtitles.packed.item.backpack.equip": "Zaino fruscia",
+  "subtitles.packed.enchantment.deflection.hit": "Zaino devia un proiettile"
+}
