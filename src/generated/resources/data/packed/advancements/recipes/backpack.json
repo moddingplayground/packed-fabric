@@ -6,6 +6,18 @@
     ]
   },
   "criteria": {
+    "has_chest": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:chest"
+            ]
+          }
+        ]
+      }
+    },
     "has_lots_of_items": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
@@ -25,6 +37,7 @@
   },
   "requirements": [
     [
+      "has_chest",
       "has_lots_of_items",
       "has_the_recipe"
     ]

@@ -8,7 +8,7 @@ import net.moddingplayground.packed.api.Packed;
 public final class PackedToymakerImpl implements Packed, ToymakerEntrypoint {
     @Override
     public void onInitializeToymaker() {
-        ItemModelGeneratorStore.register(() -> new ItemModelGenerator(MOD_ID));
-        RecipeGeneratorStore.register(() -> new RecipeGenerator(MOD_ID));
+        ItemModelGeneratorStore.register(ItemModelGenerator::new);
+        RecipeGeneratorStore.register(RecipeGenerator::new);
     }
 }
