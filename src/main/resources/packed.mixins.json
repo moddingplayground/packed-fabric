@@ -5,6 +5,7 @@
   "package": "net.moddingplayground.packed.mixin",
   "mixins": [
     "LivingEntityMixin",
+    "PlayerEntityMixin",
     "PlayerInventoryMixin",
     "PlayerScreenHandlerMixin",
     "ScreenHandlerMixin"

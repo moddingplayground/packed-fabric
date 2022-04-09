@@ -27,7 +27,10 @@
 
   "environment": "*",
   "entrypoints": {
-    "main": [ "net.moddingplayground.packed.impl.PackedImpl" ],
+    "main": [
+      "net.moddingplayground.packed.impl.PackedImpl",
+      "net.moddingplayground.packed.impl.item.PackedItemsImpl"
+    ],
     "client": [
       "net.moddingplayground.packed.impl.client.PackedClientImpl",
       "net.moddingplayground.packed.impl.client.item.PackedItemsClientImpl",

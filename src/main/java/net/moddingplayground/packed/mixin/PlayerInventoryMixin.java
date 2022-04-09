@@ -30,7 +30,7 @@ public abstract class PlayerInventoryMixin implements Inventory, Nameable, Playe
     @Shadow @Final @Mutable private List<DefaultedList<ItemStack>> combinedInventory;
     @Shadow @Final public PlayerEntity player;
 
-    @Unique private final DefaultedList<ItemStack> packed_backpack = DefaultedList.ofSize(BackpackItem.MAX_SLOT_COUNT, ItemStack.EMPTY);
+    @Unique private DefaultedList<ItemStack> packed_backpack = DefaultedList.ofSize(BackpackItem.MAX_SLOT_COUNT, ItemStack.EMPTY);
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void onInit(PlayerEntity player, CallbackInfo ci) {
@@ -41,6 +41,8 @@ public abstract class PlayerInventoryMixin implements Inventory, Nameable, Playe
 
     @Inject(method = "writeNbt", at = @At("TAIL"))
     private void onWriteNbt(NbtList list, CallbackInfoReturnable<NbtList> cir) {
+        if (BackpackItem.isEmpty(this.player)) return; // do not write if empty (for data packs checking for empty nbt)
+
         NbtCompound nbtBackpack = new NbtCompound();
         nbtBackpack.putBoolean(BackpackItem.INVENTORY_BACKPACK_KEY, true);
 
@@ -64,10 +66,10 @@ public abstract class PlayerInventoryMixin implements Inventory, Nameable, Playe
             .filter(e -> e instanceof NbtCompound compound && compound.getBoolean(BackpackItem.INVENTORY_BACKPACK_KEY))
             .findFirst()
             .map(NbtCompound.class::cast)
-            .ifPresent(nbtBackpack -> {
-                NbtList listBackpack = nbtBackpack.getList(BackpackItem.ITEMS_KEY, NbtElement.COMPOUND_TYPE);
-                for (int i = 0, l = listBackpack.size(); i < l; i++) {
-                    NbtCompound nbtStack = listBackpack.getCompound(i);
+            .ifPresent(nbt -> {
+                NbtList stacks = nbt.getList(BackpackItem.ITEMS_KEY, NbtElement.COMPOUND_TYPE);
+                for (int i = 0, l = stacks.size(); i < l; i++) {
+                    NbtCompound nbtStack = stacks.getCompound(i);
                     int index = nbtStack.getByte("Slot");
                     ItemStack stack = ItemStack.fromNbt(nbtStack);
                     if (stack.isEmpty()) continue;
@@ -124,6 +126,16 @@ public abstract class PlayerInventoryMixin implements Inventory, Nameable, Playe
                                 .map(ItemStack::copy)
                                 .toArray(ItemStack[]::new)
         );
+    }
+
+    @Override
+    public void packed_setBackpackStacks(DefaultedList<ItemStack> stacks) {
+        this.packed_backpack = stacks;
+    }
+
+    @Override
+    public void packed_clearBackpackStacks() {
+        this.packed_backpack.clear();
     }
 
     @Override
