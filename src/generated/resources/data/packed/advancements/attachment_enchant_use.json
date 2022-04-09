@@ -1,0 +1,39 @@
+{
+  "parent": "packed:obtain_backpack",
+  "display": {
+    "icon": {
+      "item": "packed:backpack",
+      "nbt": "{Enchantments:[{}]}"
+    },
+    "title": {
+      "translate": "advancements.packed.attachment_enchant_use.title"
+    },
+    "description": {
+      "translate": "advancements.packed.attachment_enchant_use.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "use_enchantment": {
+      "trigger": "packed:attachment_enchant_use",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "predicate": {},
+            "entity": "this"
+          }
+        ],
+        "backpack": {}
+      }
+    }
+  },
+  "requirements": [
+    [
+      "use_enchantment"
+    ]
+  ]
+}

@@ -4,6 +4,7 @@ import com.google.common.reflect.Reflection;
 import net.fabricmc.api.ModInitializer;
 import net.moddingplayground.frame.api.util.InitializationLogger;
 import net.moddingplayground.packed.api.Packed;
+import net.moddingplayground.packed.api.advancement.PackedCriteria;
 import net.moddingplayground.packed.api.enchantment.PackedEnchantments;
 import net.moddingplayground.packed.api.item.PackedItems;
 import net.moddingplayground.packed.api.particle.PackedParticleTypes;
@@ -23,7 +24,8 @@ public final class PackedImpl implements Packed, ModInitializer {
 
 		Reflection.initialize(
 			PackedSoundEvents.class, PackedParticleTypes.class,
-			PackedEnchantments.class, PackedItems.class
+			PackedEnchantments.class, PackedItems.class,
+			PackedCriteria.class
 		);
 
 		this.initializer.finish();

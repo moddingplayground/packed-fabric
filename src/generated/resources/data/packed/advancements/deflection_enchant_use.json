@@ -1,0 +1,30 @@
+{
+  "parent": "packed:obtain_backpack",
+  "display": {
+    "icon": {
+      "item": "packed:backpack",
+      "nbt": "{Enchantments:[{}]}"
+    },
+    "title": {
+      "translate": "advancements.packed.deflection_enchant_use.title"
+    },
+    "description": {
+      "translate": "advancements.packed.deflection_enchant_use.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "use_enchantment": {
+      "trigger": "packed:deflection_enchant_use",
+      "conditions": {}
+    }
+  },
+  "requirements": [
+    [
+      "use_enchantment"
+    ]
+  ]
+}

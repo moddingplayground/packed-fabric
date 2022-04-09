@@ -6,8 +6,10 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
+import net.moddingplayground.packed.api.advancement.PackedCriteria;
 import net.moddingplayground.packed.api.item.BackpackItem;
 import net.moddingplayground.packed.api.particle.PackedParticleTypes;
 import net.moddingplayground.packed.api.sound.PackedSoundEvents;
@@ -52,6 +54,8 @@ public abstract class LivingEntityMixin extends Entity {
                     Optional.ofNullable(source.getPosition()).ifPresent(pos -> {
                         world.spawnParticles(PackedParticleTypes.ENCHANT_DEFLECTION_HIT, pos.x, pos.y, pos.z, 17, 0.2D, 0.2D, 0.2D, 0);
                     });
+
+                    if (that instanceof ServerPlayerEntity player) PackedCriteria.DEFLECTION_ENCHANT_USE.trigger(player, source, amount, amount);
                 }
 
                 cir.setReturnValue(false);

@@ -11,9 +11,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 import net.moddingplayground.packed.api.Packed;
+import net.moddingplayground.packed.api.advancement.PackedCriteria;
 import net.moddingplayground.packed.api.enchantment.PackedEnchantments;
 import net.moddingplayground.packed.api.item.BackpackItem;
 import net.moddingplayground.packed.impl.entity.PlayerEntityAccess;
@@ -117,6 +119,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
         if (stack.getItem() instanceof BackpackItem && EnchantmentHelper.getLevel(PackedEnchantments.ATTACHMENT, stack) > 0) {
             DefaultedList<ItemStack> inv = BackpackItem.getStacks(that);
             this.packed_deathBackpackInventory = Pair.of(stack, inv);
+            if (that instanceof ServerPlayerEntity player) PackedCriteria.ATTACHMENT_ENCHANT_USE.trigger(player, stack.copy());
 
             // remove backpack information from inventory to prevent drops
             PlayerInventoryAccess accessi = (PlayerInventoryAccess) this.getInventory();

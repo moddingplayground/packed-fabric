@@ -10,5 +10,12 @@
   "enchantment.packed.attachment": "Attachment",
 
   "subtitles.packed.item.backpack.equip": "Backpack rustles",
-  "subtitles.packed.enchantment.deflection.hit": "Backpack deflects"
+  "subtitles.packed.enchantment.deflection.hit": "Backpack deflects",
+
+  "advancements.packed.obtain_backpack.title": "Packed",
+  "advancements.packed.obtain_backpack.description": "Obtain a Backpack",
+  "advancements.packed.attachment_enchant_use.title": "Attachment Issues",
+  "advancements.packed.attachment_enchant_use.description": "Die with a Backpack enchanted with Attachment",
+  "advancements.packed.deflection_enchant_use.title": "Not Today: Behind You",
+  "advancements.packed.deflection_enchant_use.description": "Deflect a projectile from behind"
 }
