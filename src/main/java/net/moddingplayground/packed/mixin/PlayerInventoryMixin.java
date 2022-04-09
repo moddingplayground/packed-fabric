@@ -30,7 +30,7 @@ public abstract class PlayerInventoryMixin implements Inventory, Nameable, Playe
     @Shadow @Final @Mutable private List<DefaultedList<ItemStack>> combinedInventory;
     @Shadow @Final public PlayerEntity player;
 
-    @Unique private DefaultedList<ItemStack> packed_backpack = DefaultedList.ofSize(BackpackItem.MAX_SLOT_COUNT, ItemStack.EMPTY);
+    private @Unique final DefaultedList<ItemStack> packed_backpack = DefaultedList.ofSize(BackpackItem.MAX_SLOT_COUNT, ItemStack.EMPTY);
 
     /**
      * Adds the backpack inventory to the combined player inventory.
@@ -137,13 +137,21 @@ public abstract class PlayerInventoryMixin implements Inventory, Nameable, Playe
         );
     }
 
+    /**
+     * @implNote Does not directly set {@link #packed_backpack}, as it is
+     *           the easiest way to keep its reference in {@link #combinedInventory}
+     *           synchronized.
+     */
     @Override
-    public void packed_setBackpackStacks(DefaultedList<ItemStack> stacks) {
-        this.packed_backpack = stacks;
+    public @Unique void packed_setBackpackStacks(DefaultedList<ItemStack> stacks) {
+        for (int i = 0, l = stacks.size(); i < l; i++) {
+            ItemStack stack = stacks.get(i);
+            this.packed_backpack.set(i, stack);
+        }
     }
 
     @Override
-    public void packed_clearBackpackStacks() {
+    public @Unique void packed_clearBackpackStacks() {
         this.packed_backpack.clear();
     }
 
