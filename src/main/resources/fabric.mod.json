@@ -22,11 +22,7 @@
     "issues": "https://github.com/moddingplayground/packed-fabric/issues"
   },
   "custom": {
-    "modmenu": { "links": { "mod.packed.contact.discord": "https://discord.moddingplayground.net" } },
-    "modupdater": {
-      "strategy": "curseforge",
-      "projectID": 605403
-    }
+    "modmenu": { "links": { "mod.packed.contact.discord": "https://discord.moddingplayground.net" } }
   },
 
   "environment": "*",
