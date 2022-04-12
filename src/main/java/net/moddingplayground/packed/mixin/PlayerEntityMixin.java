@@ -103,6 +103,24 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
     }
 
     /**
+     * Clears backpack inventory if the backpack is cursed with vanishing.
+     */
+    @Inject(
+        method = "dropInventory",
+        at = @At(
+            value = "INVOKE",
+            target = "Lnet/minecraft/entity/player/PlayerEntity;vanishCursedItems()V",
+            shift = At.Shift.BEFORE
+        )
+    )
+    private void onDropInventoryBeforeVanish(CallbackInfo ci) {
+        ItemStack stack = this.getEquippedStack(EquipmentSlot.CHEST);
+        if (stack.getItem() instanceof BackpackItem && EnchantmentHelper.hasVanishingCurse(stack)) {
+            ((PlayerInventoryAccess) this.getInventory()).packed_clearBackpackStacks();
+        }
+    }
+
+    /**
      * Captures the player's backpack and backpack inventory before the inventory is processed.
      */
     @Inject(
@@ -113,7 +131,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
             shift = At.Shift.AFTER
         )
     )
-    private void onDropInventory(CallbackInfo ci) {
+    private void onDropInventoryAfterVanish(CallbackInfo ci) {
         PlayerEntity that = PlayerEntity.class.cast(this);
         ItemStack stack = this.getEquippedStack(EquipmentSlot.CHEST);
         if (stack.getItem() instanceof BackpackItem && EnchantmentHelper.getLevel(PackedEnchantments.ATTACHMENT, stack) > 0) {
@@ -122,9 +140,8 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
             if (that instanceof ServerPlayerEntity player) PackedCriteria.ATTACHMENT_ENCHANT_USE.trigger(player, stack.copy());
 
             // remove backpack information from inventory to prevent drops
-            PlayerInventoryAccess accessi = (PlayerInventoryAccess) this.getInventory();
             this.equipStack(EquipmentSlot.CHEST, ItemStack.EMPTY);
-            accessi.packed_clearBackpackStacks();
+            ((PlayerInventoryAccess) this.getInventory()).packed_clearBackpackStacks();
         }
     }
 
