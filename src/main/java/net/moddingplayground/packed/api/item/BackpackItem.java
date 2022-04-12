@@ -82,6 +82,11 @@ public class BackpackItem extends Item implements Wearable {
         return true;
     }
 
+    @Override
+    public int getEnchantability() {
+        return 1;
+    }
+
     /* Utilities */
 
     public static DefaultedList<ItemStack> getStacks(PlayerEntity player) {
