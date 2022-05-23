@@ -38,15 +38,15 @@
       "net.moddingplayground.packed.impl.client.particle.PackedParticleTypesClientImpl"
     ],
 
-    "toymaker": [ "net.moddingplayground.packed.impl.data.PackedToymakerImpl" ]
+    "fabric-datagen": [ "net.moddingplayground.packed.impl.data.PackedDataGeneratorImpl" ]
   },
   "mixins": [ "packed.mixins.json" ],
 
   "depends": {
     "java": ">=17",
-    "minecraft": ">=1.18",
+    "minecraft": ">=1.19-beta",
     "fabricloader": ">=0.14",
-    "fabric": ">=0.44",
-    "frame": ">=0.14"
+    "fabric": ">=0.53",
+    "frame": ">=0.18"
   }
 }

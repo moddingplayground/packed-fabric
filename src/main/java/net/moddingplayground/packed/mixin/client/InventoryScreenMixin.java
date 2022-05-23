@@ -12,7 +12,6 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
 import net.moddingplayground.packed.api.Packed;
 import net.moddingplayground.packed.api.item.BackpackItem;
@@ -27,7 +26,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class InventoryScreenMixin extends AbstractInventoryScreen<PlayerScreenHandler> {
     private static final Identifier PACKED_BACKPACK_TEXTURE = new Identifier(Packed.MOD_ID, "textures/gui/backpack.png");
     private static final Identifier PACKED_BACKPACK_TEXTURE_CAPACITY = new Identifier(Packed.MOD_ID, "textures/gui/backpack_capacity.png");
-    private static final Text PACKED_BACKPACK_TITLE = new TranslatableText("ui.%s.backpack_title".formatted(Packed.MOD_ID));
+    private static final Text PACKED_BACKPACK_TITLE = Text.translatable("ui.%s.backpack_title".formatted(Packed.MOD_ID));
 
     private InventoryScreenMixin(PlayerScreenHandler handler, PlayerInventory inventory, Text text) {
         super(handler, inventory, text);

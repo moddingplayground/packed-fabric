@@ -64,18 +64,20 @@ loom {
   runtimeOnlyLog4j = true
 
   runs {
-    data {
+    datagen {
       server()
-      vmArgs(
-              "-Dtoymaker.datagen=true",
-              "-Dtoymaker.datagen.modid=${project.mod_id}",
-              "-Dtoymaker.datagen.path=\"${project.file(dataOutput)};${project.file("$buildDir/resources/main")}\""
-      )
+
+      name "Data Generation"
+      vmArg "-Dfabric-api.datagen"
+      vmArg "-Dfabric-api.datagen.output-dir=${file(dataOutput)}"
+
+      runDir "build/datagen"
     }
   }
 }
+assemble.dependsOn runDatagen
 
-sourceSets.main.resources { srcDirs += dataOutput }
+sourceSets { main { resources { srcDirs += dataOutput } } }
 
 /* Resource Processing */
 

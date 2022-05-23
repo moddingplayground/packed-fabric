@@ -1,25 +1,25 @@
 {
   "parent": "packed:obtain_backpack",
+  "criteria": {
+    "use_enchantment": {
+      "conditions": {},
+      "trigger": "packed:deflection_enchant_use"
+    }
+  },
   "display": {
-    "icon": {
-      "item": "packed:backpack",
-      "nbt": "{Enchantments:[{}]}"
-    },
-    "title": {
-      "translate": "advancements.packed.deflection_enchant_use.title"
-    },
+    "announce_to_chat": true,
     "description": {
       "translate": "advancements.packed.deflection_enchant_use.description"
     },
     "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "packed:backpack",
+      "nbt": "{Enchantments:[{}]}"
+    },
     "show_toast": true,
-    "announce_to_chat": true,
-    "hidden": false
-  },
-  "criteria": {
-    "use_enchantment": {
-      "trigger": "packed:deflection_enchant_use",
-      "conditions": {}
+    "title": {
+      "translate": "advancements.packed.deflection_enchant_use.title"
     }
   },
   "requirements": [
